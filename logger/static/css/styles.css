@@ -1,0 +1,117 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Header with logo */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the logo and the text */
+    margin-bottom: 20px; /* Space below the header */
+}
+
+.header .logo {
+    width: 80px; /* Adjust the width of the logo */
+    height: 80px; /* Match height to width for a square */
+    border-radius: 10px; /* Optional: Slightly rounded edges for a modern look */
+    object-fit: cover; /* Ensures the logo scales proportionally */
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333; /* Match the main text color */
+}
+
+/* Container Styling */
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 700px; /* Adjust the maximum width for smaller screens */
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: auto;
+}
+
+/* Button Styling */
+.button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.button.warning {
+    background-color: #ffc107;
+}
+
+.button.warning:hover {
+    background-color: #e0a800;
+}
+
+.button.danger {
+    background-color: #dc3545;
+}
+
+.button.danger:hover {
+    background-color: #a71d2a;
+}
+
+/* Chat Box Styling */
+.chat-box {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    height: 65vh; /* Use relative height for responsive design */
+    max-height: 500px; /* Cap the height for larger screens */
+    overflow-y: auto;
+    background: #f9f9f9;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Chat Message Styling */
+.user-message {
+    text-align: right;
+    margin: 5px 0;
+    color: #007bff;
+}
+
+.assistant-message {
+    text-align: left;
+    margin: 5px 0;
+    color: #333;
+}
+
+/* Scrollbar Styling for Chat Box */
+.chat-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-thumb:hover {
+    background: #999999;
+}
