@@ -14,15 +14,17 @@ body {
 .header {
     display: flex;
     align-items: center;
-    gap: 10px; /* Space between the logo and the text */
+    justify-content: center;
+    gap: 15px; /* Space between the logo and the text */
     margin-bottom: 20px; /* Space below the header */
 }
 
 .header .logo {
-    width: 80px; /* Adjust the width of the logo */
-    height: 80px; /* Match height to width for a square */
-    border-radius: 10px; /* Optional: Slightly rounded edges for a modern look */
+    width: 60px; /* Adjust the width of the logo */
+    height: 60px; /* Match height to width for a square */
+    border-radius: 12px; /* Slightly rounded edges for modern look */
     object-fit: cover; /* Ensures the logo scales proportionally */
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
 }
 
 .header h1 {

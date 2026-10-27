@@ -4,6 +4,7 @@ import yt_dlp, os
 import vlc
 from logger import CustomLogger  # Import CustomLogger
 from prompts.music_prompt import music_few_shot_examples, music_prompt_template
+from modules.utils import get_best_groq_model
 
 
 class MusicModule:
@@ -16,9 +17,10 @@ class MusicModule:
         Initialize the Music Module with the required API key.
         """
         # Initialize the Groq LLM for music query processing
+        model = get_best_groq_model(api_key)
         self.llm_music = ChatGroq(
             api_key=api_key,
-            model="llama3-8b-8192",
+            model=model,
             temperature=0.4
         )
 

@@ -4,6 +4,7 @@ from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
 from logger import CustomLogger  # Import CustomLogger
 from prompts.qna_prompts import qna_prompy_template
+from modules.utils import get_best_groq_model
 
 
 class QnAModule:
@@ -20,15 +21,16 @@ class QnAModule:
         self.logger.info("Initializing QnAModule.")
 
         # Initialize Groq LLM
+        model = get_best_groq_model(api_key)
         self.llm = ChatGroq(
             api_key=api_key,
-            model="llama3-8b-8192",
+            model=model,
             temperature=0.6,
             max_tokens=None,
             timeout=None,
             max_retries=2,
         )
-        self.logger.info("Groq LLM initialized for QnA module.")
+        self.logger.info(f"Groq LLM initialized for QnA module with model: {model}")
 
         # Custom Prompt
         self.prompt = qna_prompy_template

@@ -96,3 +96,32 @@ def extract_location(user_input, llm):
     response = llm.invoke(messages)
     location = response.content.strip()
     return location if location else None
+
+
+def get_best_groq_model(api_key):
+    """
+    Dynamically select an active, supported chat model on Groq for the given API key.
+    Avoids hardcoding decommissioned models.
+    """
+    preferred_models = [
+        "llama-3.3-70b-versatile",
+        "llama-3.1-8b-instant",
+        "openai/gpt-oss-20b",
+        "openai/gpt-oss-120b",
+        "qwen/qwen3.8-27b",
+        "allam-2-7b"
+    ]
+    try:
+        import groq
+        client = groq.Groq(api_key=api_key)
+        available_ids = [m.id for m in client.models.list().data]
+        for model in preferred_models:
+            if model in available_ids:
+                return model
+        for model in available_ids:
+            if not any(k in model for k in ["whisper", "guard", "orpheus", "safeguard"]):
+                return model
+    except Exception:
+        pass
+    return "openai/gpt-oss-20b"
+

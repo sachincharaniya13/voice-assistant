@@ -195,9 +195,13 @@ def detect_intent(user_input):
                 HumanMessage(content=prompt)
             ]
         response = qna_module.llm.invoke(messages)
-        intent_detected = response.content.strip().lower()
-        print(f"[DEBUG] Detected Intent: {intent_detected}")
-        return intent_detected
+        raw_text = response.content.strip().lower()
+        print(f"[DEBUG] Detected Intent: {raw_text}")
+        for valid in ["qna", "music", "weather", "reminder"]:
+            if valid in raw_text:
+                return valid
+        return raw_text
 
     except Exception as e:
         logger.error(f"Error detecting intent: {e}")
+        return None

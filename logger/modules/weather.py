@@ -1,8 +1,7 @@
 import requests
 from langchain_groq import ChatGroq
-from modules.utils import weather_description_fetcher
+from modules.utils import weather_description_fetcher, extract_location, get_best_groq_model
 from logger import CustomLogger
-from modules.utils import extract_location
 
 
 class WeatherModule:
@@ -14,15 +13,15 @@ class WeatherModule:
         """
         Initialize the Weather Module.
         """
-
+        model = get_best_groq_model(api_key)
         self.llm = ChatGroq(
             api_key=api_key,
-            model="llama3-8b-8192",
+            model=model,
             temperature=0.7
         )
         # Initialize logger
         self.logger = CustomLogger().get_logger()
-        self.logger.info("WeatherModule initialized.")
+        self.logger.info(f"WeatherModule initialized with model: {model}.")
         
 
 
